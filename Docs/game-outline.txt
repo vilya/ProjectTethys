@@ -6,3 +6,59 @@ Project Tethys
 - You have to defend an undersea lab (or multiple labs?) from attackers.
 - Researchers out doing dives may be abducted by the bad guys; you have to rescue them.
 
+
+Enemy types
+-----------
+
+Fighter   - Moves towards the player, firing at them.
+Bomber    - Moves across the screen, dropping bombs when it's above either the
+            player or the base.
+Minelayer - Follows an arbitrary path across the screen, spawning mines as it goes.
+Mine      - Stationary, triggered by proximity. When triggered, it starts a
+            short countdown before exploding.
+Kidnapper - Homes in on the nearest scientist outside the base. When it gets to
+            touching distance, it collects the scientist and runs for the left
+            or right edge, whichever is nearest.
+
+
+Weapon types
+------------
+
+Laser     - The default weapon.
+Torpedo   - A slower moving but more powerful weapon, will home in on enemies
+            which come within range of its sensors.
+Shockwave - A wave of pressure radiates out from the player, forcing enemies
+            back. Deals a small amount of damage to enemies and destroys any
+            bullets or torpedos it touches. The blast also triggers the
+            proximity sensor for mines.
+
+
+Objectives
+----------
+
+Protect the base
+- If the base is destroyed, it's game over.
+- Shoot down enemies that are attacking it before they can do too much damage.
+
+Destroy enemies
+- You must destroy all enemies in each level to progress.
+
+Rescue scientists
+- Each level starts with a set number of scientists which need rescuing.
+- The scientists will either start out in the open, or emerge from the base as
+  time passes.
+- You can pick up any scientists out in the open and take them to safety on a
+  ship parked above.
+- Rescuing them gives you bonus points at the end of the level.
+- If a scientist has been picked up by an enemy, shooting down the enemy will
+  free the scientist.
+- You must rescue a minimum number of scientists to progress?
+
+
+Win conditions
+--------------
+
+You progress to the next level when you have done all of the following:
+- Destroyed all enemies.
+- Rescued a sufficient number of scientists?
+
