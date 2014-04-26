@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour {
 
 		rigidbody.AddForce(movement * speed * Time.deltaTime);
 
-		rigidbody.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f + rigidbody.velocity.y * tilt);
+		if (x < 0.0f) {
+			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 180.0f, 90.0f + rigidbody.velocity.y * tilt));
+		}
+		else if (x > 0.0f) {
+			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, 90.0f + rigidbody.velocity.y * tilt));
+		}
 	}
 }
