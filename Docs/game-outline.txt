@@ -1,0 +1,8 @@
+Project Tethys
+--------------
+
+- Similar gameplay to Defender, Resogun, etc.
+- Set underwater and you're driving a submarine.
+- You have to defend an undersea lab (or multiple labs?) from attackers.
+- Researchers out doing dives may be abducted by the bad guys; you have to rescue them.
+
