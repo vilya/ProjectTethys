@@ -27,6 +27,9 @@ public class GameController : MonoBehaviour {
 	private bool gameOver;
 	private bool restart;
 
+	static int nextScreenShotNum = 1;
+	private float nextScreenShotTime = 0.0f;
+
 	// Use this for initialization
 	void Start() {
 		gameOver = false;
@@ -45,6 +48,12 @@ public class GameController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.LoadLevel("TitleScreen");
 			return;
+		}
+
+		if (Input.GetKeyDown(KeyCode.Return) && Time.time >= nextScreenShotTime) {
+			Application.CaptureScreenshot("ProjectTethysScreenshot" + nextScreenShotNum + ".png");
+			nextScreenShotNum++;
+			nextScreenShotTime = Time.time + 1.0f;
 		}
 
 		if (restart) {
