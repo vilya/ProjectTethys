@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class GameController : MonoBehaviour {
 	public GameObject bomber;
 	public GameObject fighter;
 	public GameObject explosion;
+	public GameObject shieldPickUp;
 
 	public GameObject player;
 
@@ -71,6 +73,7 @@ public class GameController : MonoBehaviour {
 				// Small delay in between launching each wave.
 				yield return new WaitForSeconds(spawnWait);
 			}
+			SpawnPickUp();
 			// Pause before launching the next wave.
 			yield return new WaitForSeconds(waveWait);
 		}
@@ -80,6 +83,14 @@ public class GameController : MonoBehaviour {
 	}
 
 
+	void SpawnPickUp() {
+		float x = Random.Range(-spawnValues.x, spawnValues.x);
+		float y = spawnValues.y + 15.0f;
+		Vector3 spawnPosition = new Vector3(x, y, 0.0f);
+		Instantiate(shieldPickUp, spawnPosition, Quaternion.identity);
+	}
+
+	
 	public void AddScore(int extraPoints) {
 		score += extraPoints;
 		UpdateScore();

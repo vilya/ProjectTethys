@@ -1666,6 +1666,7 @@ MonoBehaviour:
   bomber: {fileID: 100000, guid: b932d634531ad4844b2891ce2b7261b1, type: 2}
   fighter: {fileID: 0}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
+  shieldPickUp: {fileID: 100000, guid: fe29b6bb637ec954ba9d9230053050d2, type: 2}
   player: {fileID: 891233706}
   spawnValues: {x: 100, y: 20, z: 0}
   spawnWait: .300000012

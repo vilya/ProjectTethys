@@ -69,7 +69,12 @@ public class PlayerController : MonoBehaviour {
 
 		//Debug.Log("player got hit by " + other.gameObject.tag);
 
-		TakeDamage();
+		if (other.gameObject.tag == "ShieldPickUp") {
+			RepairDamage();
+		}
+		else {
+			TakeDamage();
+		}
 	}
 
 
@@ -83,5 +88,13 @@ public class PlayerController : MonoBehaviour {
 		else {
 			gameController.UpdateShieldLevel(currentShieldLevel);
 		}
+	}
+
+
+	void RepairDamage() {
+		if (currentShieldLevel < initialShieldLevel) {
+			++currentShieldLevel;
+		}
+		gameController.UpdateShieldLevel(currentShieldLevel);
 	}
 }
