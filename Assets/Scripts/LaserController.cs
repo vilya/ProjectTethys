@@ -13,7 +13,7 @@ public class LaserController : MonoBehaviour {
 		if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "Player") {
 			return;
 		}
-		Debug.Log("laser got hit by a " + other.gameObject.tag);
+		//Debug.Log("laser got hit by a " + other.gameObject.tag);
 		Destroy(gameObject);
 	}
 }

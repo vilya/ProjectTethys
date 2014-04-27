@@ -19,7 +19,7 @@ public class BaseController : MonoBehaviour {
 
 	
 	public void OnTriggerEnter(Collider other) {
-		Debug.Log("base got hit by a " + other.gameObject.tag);
+		//Debug.Log("base got hit by a " + other.gameObject.tag);
 
 		if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "Player") {
 			return;

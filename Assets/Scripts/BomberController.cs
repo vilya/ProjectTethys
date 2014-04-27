@@ -42,7 +42,7 @@ public class BomberController : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log("bomber got hit by a " + other.gameObject.tag);
+		//Debug.Log("bomber got hit by a " + other.gameObject.tag);
 		if (other.gameObject.tag == "Laser" || other.gameObject.tag == "Player") {
 			gameController.AddScore(pointsValue);
 		}

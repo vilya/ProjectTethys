@@ -9,7 +9,7 @@ public class BombController : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log("bomb got hit by a " + other.gameObject.tag);
+		//Debug.Log("bomb got hit by a " + other.gameObject.tag);
 
 		Instantiate(explosion, transform.position, Quaternion.identity);
 		Destroy(gameObject);

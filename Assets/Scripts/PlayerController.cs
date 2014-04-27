@@ -62,11 +62,7 @@ public class PlayerController : MonoBehaviour {
 			return;
 		}
 
-		Debug.Log("player got hit by " + other.gameObject.tag);
-
-//		if (other.gameObject.tag != "Bomb") {
-//			return;
-//		}
+		//Debug.Log("player got hit by " + other.gameObject.tag);
 
 		TakeDamage();
 	}
