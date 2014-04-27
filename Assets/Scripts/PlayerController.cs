@@ -22,9 +22,14 @@ public class PlayerController : MonoBehaviour {
 
 	private float maxSpeed;
 
+	public int initialShieldLevel;
+	private int currentShieldLevel;
+
 
 	void Start() {
 		gameController = GameController.GetInstance();
+		currentShieldLevel = initialShieldLevel;
+		gameController.UpdateShieldLevel(currentShieldLevel);
 	}
 
 
@@ -69,8 +74,14 @@ public class PlayerController : MonoBehaviour {
 
 
 	void TakeDamage() {
-		Instantiate(explosion, transform.position, Quaternion.identity);
-		gameController.GameOver();
-		Destroy(gameObject);
+		--currentShieldLevel;
+		if (currentShieldLevel < 0) {
+			Instantiate(explosion, transform.position, Quaternion.identity);
+			gameController.GameOver();
+			Destroy(gameObject);
+		}
+		else {
+			gameController.UpdateShieldLevel(currentShieldLevel);
+		}
 	}
 }

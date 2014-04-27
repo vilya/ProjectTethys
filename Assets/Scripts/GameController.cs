@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public float waveWait;
 
 	public GUIText scoreText;
+	public GUIText shieldText;
 	public GUIText baseHealthText;
 	public GUIText restartText;
 	public GUIText gameOverText;
@@ -76,7 +77,17 @@ public class GameController : MonoBehaviour {
 
 
 	public void UpdateBaseHealth(int newBaseHealth) {
-		baseHealthText.text = newBaseHealth + "% operational";
+		baseHealthText.text = "Base " + newBaseHealth + "% operational";
+	}
+
+
+	public void UpdateShieldLevel(int newShieldLevel) {
+		if (newShieldLevel > 0) {
+			shieldText.text = "Shields at " + newShieldLevel;
+		}
+		else {
+			shieldText.text = "Shields down!";
+		}
 	}
 
 
