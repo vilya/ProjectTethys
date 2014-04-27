@@ -10,6 +10,7 @@ public class Boundary {
 
 public class PlayerController : MonoBehaviour {
 	private GameController gameController;
+	public GameObject shield;
 	public GameObject explosion;
 
 	public float speed;
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour {
 
 	public int initialShieldLevel;
 	private int currentShieldLevel;
+
+	public float damageRate;
+	private float nextDamage;
 
 
 	void Start() {
@@ -73,7 +77,9 @@ public class PlayerController : MonoBehaviour {
 			RepairDamage();
 		}
 		else {
-			TakeDamage();
+			if (Time.time >= nextDamage) {
+				TakeDamage();
+			}
 		}
 	}
 
@@ -84,17 +90,38 @@ public class PlayerController : MonoBehaviour {
 			Instantiate(explosion, transform.position, Quaternion.identity);
 			gameController.GameOver();
 			Destroy(gameObject);
+			return;
 		}
-		else {
-			gameController.UpdateShieldLevel(currentShieldLevel);
-		}
+
+		nextDamage = Time.time + damageRate;
+		StartCoroutine(BlinkShield());
+		//if (currentShieldLevel == 0) {
+		//	shield.SetActive(false);
+		//}
+		gameController.UpdateShieldLevel(currentShieldLevel);
+
 	}
 
 
 	void RepairDamage() {
+		if (currentShieldLevel == 0) {
+			shield.SetActive(true);
+		}
 		if (currentShieldLevel < initialShieldLevel) {
 			++currentShieldLevel;
 		}
 		gameController.UpdateShieldLevel(currentShieldLevel);
+	}
+
+
+	IEnumerator BlinkShield() {
+		float delay = 0.25f * damageRate;
+		bool active = true;
+		while (Time.time < nextDamage) {
+			active = !active;
+			shield.SetActive(active);
+			yield return new WaitForSeconds(delay);
+		}
+		shield.SetActive(currentShieldLevel > 0);
 	}
 }

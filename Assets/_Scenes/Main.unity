@@ -1481,6 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2ee8b477c57745af91a0d9c867491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield: {fileID: 1161244767}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   speed: 30
   boundary:
@@ -1492,6 +1493,7 @@ MonoBehaviour:
   shotSpawn: {fileID: 1263111750}
   fireRate: .150000006
   initialShieldLevel: 3
+  damageRate: 1
 --- !u!4 &891233708
 Transform:
   m_ObjectHideFlags: 0
@@ -1913,7 +1915,7 @@ GameObject:
   - 33: {fileID: 1161244770}
   - 23: {fileID: 1161244769}
   m_Layer: 0
-  m_Name: Shields
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
