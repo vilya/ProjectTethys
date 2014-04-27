@@ -12,10 +12,11 @@ public class GameController : MonoBehaviour {
 	public float waveWait;
 
 	public GUIText scoreText;
+	public GUIText baseHealthText;
 	public GUIText restartText;
 	public GUIText gameOverText;
 
-	public int score;
+	private int score;
 
 	private bool gameOver;
 	private bool restart;
@@ -72,6 +73,11 @@ public class GameController : MonoBehaviour {
 	}
 
 
+	public void UpdateBaseHealth(int newBaseHealth) {
+		baseHealthText.text = newBaseHealth + "% operational";
+	}
+
+
 	void UpdateScore() {
 		scoreText.text = score + " pts";
 	}
@@ -80,5 +86,17 @@ public class GameController : MonoBehaviour {
 	public void GameOver() {
 		gameOver = true;
 		gameOverText.text = "Game Over";
+	}
+
+
+	public static GameController GetInstance() {
+		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+		if (gameControllerObject == null) {
+			Debug.Log("Cannot find 'GameController' object");
+			return null;
+		}
+
+		GameController gameController = gameControllerObject.GetComponent<GameController>();
+		return gameController;
 	}
 }

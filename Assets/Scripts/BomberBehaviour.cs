@@ -9,9 +9,4 @@ public class BomberBehaviour : MonoBehaviour {
 		float direction = (Random.value >= 0.5f) ? 1.0f : -1.0f;
 		rigidbody.velocity = transform.right * speed * direction;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

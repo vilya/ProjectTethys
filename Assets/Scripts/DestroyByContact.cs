@@ -7,13 +7,7 @@ public class DestroyByContact : MonoBehaviour {
 	public int scoreValue;
 
 	void Start() {
-		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-		if (gameControllerObject != null) {
-			gameController = gameControllerObject.GetComponent<GameController>();
-		}
-		if (gameControllerObject == null) {
-			Debug.Log("Cannot find 'GameController' object");
-		}
+		gameController = GameController.GetInstance();
 	}
 
 
