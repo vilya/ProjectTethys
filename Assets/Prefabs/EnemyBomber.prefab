@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
+  scoreValue: 300
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

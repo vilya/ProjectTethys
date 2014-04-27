@@ -11,17 +11,42 @@ public class GameController : MonoBehaviour {
 	public float startWait;
 	public float waveWait;
 
+	public GUIText scoreText;
+	public GUIText restartText;
+	public GUIText gameOverText;
+
+	public int score;
+
+	private bool gameOver;
+	private bool restart;
 
 	// Use this for initialization
 	void Start() {
+		gameOver = false;
+		restart = false;
+		gameOverText.text = "";
+		restartText.text = "";
+
+		score = 0;
+		UpdateScore();
+
 		StartCoroutine(SpawnWaves(bomber));
+	}
+
+
+	void Update() {
+		if (restart) {
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				Application.LoadLevel(Application.loadedLevel);
+			}
+		}
 	}
 	
 
 	IEnumerator SpawnWaves(GameObject enemy) {
 		// Delay before launching the first wave.
 		yield return new WaitForSeconds(startWait);
-		while (true) {
+		while (!gameOver) {
 			for (int i = 0; i < 10; ++i) {
 				Vector3 spawnPosition = new Vector3(
 					Random.Range(-spawnValues.x, spawnValues.x),
@@ -35,5 +60,25 @@ public class GameController : MonoBehaviour {
 			// Pause before launching the next wave.
 			yield return new WaitForSeconds(waveWait);
 		}
+
+		restartText.text = "Press <space> to restart";
+		restart = true;
+	}
+
+
+	public void AddScore(int extraPoints) {
+		score += extraPoints;
+		UpdateScore();
+	}
+
+
+	void UpdateScore() {
+		scoreText.text = score + " pts";
+	}
+
+
+	public void GameOver() {
+		gameOver = true;
+		gameOverText.text = "Game Over";
 	}
 }

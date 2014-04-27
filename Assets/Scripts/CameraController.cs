@@ -13,6 +13,10 @@ public class CameraController : MonoBehaviour {
 	
 	// LateUpdate is called once per frame
 	void LateUpdate () {
+		if (player == null) {
+			return;
+		}
+
 		Vector3 offset = player.transform.position - transform.position;
 		offset.z = 0.0f;
 		
