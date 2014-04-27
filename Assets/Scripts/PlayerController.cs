@@ -9,6 +9,9 @@ public class Boundary {
 
 
 public class PlayerController : MonoBehaviour {
+	private GameController gameController;
+	public GameObject explosion;
+
 	public float speed;
 	public Boundary boundary;
 
@@ -18,6 +21,12 @@ public class PlayerController : MonoBehaviour {
 	private float nextFire;
 
 	private float maxSpeed;
+
+
+	void Start() {
+		gameController = GameController.GetInstance();
+	}
+
 
 	void Update() {
 		if (Input.GetButton("Fire1") && Time.time > nextFire) {
@@ -45,5 +54,18 @@ public class PlayerController : MonoBehaviour {
 		else if (x > 0.0f) {
 			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, 90.0f));
 		}
+	}
+
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag != "Bomb") {
+			return;
+		}
+
+		Instantiate(explosion, transform.position, Quaternion.identity);
+		Instantiate(explosion, other.transform.position, Quaternion.identity);
+		gameController.GameOver();
+		Destroy(gameObject);
+		Destroy(other.gameObject);
 	}
 }

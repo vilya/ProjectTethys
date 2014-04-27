@@ -48,12 +48,11 @@ public class GameController : MonoBehaviour {
 		// Delay before launching the first wave.
 		yield return new WaitForSeconds(startWait);
 		while (!gameOver) {
+			// Randomly decide which side of the play area this wave will start from.
+			float x = (Random.value < 0.5f) ? -spawnValues.x : spawnValues.x;
 			for (int i = 0; i < 10; ++i) {
-				Vector3 spawnPosition = new Vector3(
-					Random.Range(-spawnValues.x, spawnValues.x),
-					Random.Range(-spawnValues.y, spawnValues.y),
-					0.0f
-				);
+				float y = Random.Range(-spawnValues.y, spawnValues.y);
+				Vector3 spawnPosition = new Vector3(x, y, 0.0f);
 				Instantiate(enemy, spawnPosition, Quaternion.identity);
 				// Small delay in between launching each wave.
 				yield return new WaitForSeconds(spawnWait);

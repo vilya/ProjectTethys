@@ -25,6 +25,10 @@ public class BaseController : MonoBehaviour {
 
 		int damage = 1; // TODO: get this from the weapon type.
 		TakeDamage(damage);
+
+		if (other.gameObject.tag == "Bomb") {
+			Instantiate(explosion, other.transform.position, Quaternion.identity);
+		}
 		Destroy(other.gameObject);
 	}
 

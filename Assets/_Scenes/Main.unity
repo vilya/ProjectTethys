@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2ee8b477c57745af91a0d9c867491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   speed: 30
   boundary:
     xMin: -100
@@ -967,7 +968,7 @@ MonoBehaviour:
   fighter: {fileID: 0}
   spawnValues: {x: 100, y: 20, z: 0}
   spawnWait: .300000012
-  startWait: 2
+  startWait: 0
   waveWait: 2
   scoreText: {fileID: 36960661}
   baseHealthText: {fileID: 1707402113}
