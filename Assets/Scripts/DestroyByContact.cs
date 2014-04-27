@@ -12,16 +12,18 @@ public class DestroyByContact : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other) {
+		Debug.Log("DestroyByContact is still being used when a " + gameObject.tag + " is hit by a " + other.gameObject.tag);
+		/*
 		if (other.gameObject.tag == "Boundary") {
 			return;
 		}
 		Instantiate(explosion, transform.position, Quaternion.identity);
 		if (other.gameObject.tag == "Player") {
-			Instantiate(explosion, other.transform.position, Quaternion.identity);
-			gameController.GameOver();
+			gameController.DamagePlayer();
 		}
 		gameController.AddScore(scoreValue);
 		Destroy(other.gameObject);
 		Destroy(gameObject);
+		*/
 	}
 }

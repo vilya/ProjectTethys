@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
 	public GameObject bomber;
 	public GameObject fighter;
+	public GameObject explosion;
+
+	public GameObject player;
 
 	public Vector3 spawnValues;
 

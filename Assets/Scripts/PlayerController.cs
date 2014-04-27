@@ -49,23 +49,32 @@ public class PlayerController : MonoBehaviour {
 			0.0f
 		);
 		if (x < 0.0f) {
-			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 180.0f, 90.0f));
+			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 180.0f, 0.0f));
 		}
 		else if (x > 0.0f) {
-			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, 90.0f));
+			rigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		}
 	}
 
 
-	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag != "Bomb") {
+	public void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag == "Laser" || other.gameObject.tag == "Boundary") {
 			return;
 		}
 
+		Debug.Log("player got hit by " + other.gameObject.tag);
+
+//		if (other.gameObject.tag != "Bomb") {
+//			return;
+//		}
+
+		TakeDamage();
+	}
+
+
+	void TakeDamage() {
 		Instantiate(explosion, transform.position, Quaternion.identity);
-		Instantiate(explosion, other.transform.position, Quaternion.identity);
 		gameController.GameOver();
 		Destroy(gameObject);
-		Destroy(other.gameObject);
 	}
 }

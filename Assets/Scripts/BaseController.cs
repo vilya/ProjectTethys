@@ -18,7 +18,9 @@ public class BaseController : MonoBehaviour {
 	}
 
 	
-	void OnTriggerEnter(Collider other) {
+	public void OnTriggerEnter(Collider other) {
+		Debug.Log("base got hit by a " + other.gameObject.tag);
+
 		if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "Player") {
 			return;
 		}
@@ -26,10 +28,10 @@ public class BaseController : MonoBehaviour {
 		int damage = 1; // TODO: get this from the weapon type.
 		TakeDamage(damage);
 
-		if (other.gameObject.tag == "Bomb") {
-			Instantiate(explosion, other.transform.position, Quaternion.identity);
-		}
-		Destroy(other.gameObject);
+		//if (other.gameObject.tag == "Bomb") {
+		//	Instantiate(explosion, other.transform.position, Quaternion.identity);
+		//}
+		//Destroy(other.gameObject);
 	}
 
 
