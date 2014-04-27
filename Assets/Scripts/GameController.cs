@@ -119,7 +119,17 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver() {
 		gameOver = true;
-		gameOverText.text = "Game Over";
+
+		HighScores highScores = new HighScores();
+		if (highScores.IsHighScore(score)) {
+			gameOverText.text = "New high score!";
+			highScores.AddHighScore("You", score);
+			highScores.SaveHighScores();
+			StartCoroutine(SwitchToLevelAfterPause("HighScores", 4.0f));
+		}
+		else {
+			gameOverText.text = "Game Over";
+		}
 	}
 
 
@@ -132,5 +142,11 @@ public class GameController : MonoBehaviour {
 
 		GameController gameController = gameControllerObject.GetComponent<GameController>();
 		return gameController;
+	}
+
+
+	IEnumerator SwitchToLevelAfterPause(string levelName, float pauseInSeconds) {
+		yield return new WaitForSeconds(pauseInSeconds);
+		Application.LoadLevel(levelName);
 	}
 }
