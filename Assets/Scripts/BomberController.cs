@@ -19,8 +19,8 @@ public class BomberController : MonoBehaviour {
 	void Start () {
 		gameController = GameController.GetInstance();
 
-		float direction = (Random.value >= 0.5f) ? 1.0f : -1.0f;
-		rigidbody.velocity = transform.right * speed * direction;
+		//float direction = (Random.value >= 0.5f) ? 1.0f : -1.0f;
+		rigidbody.velocity = transform.right * speed;
 
 		StartCoroutine(SpawnBombs());
 	}

@@ -40,6 +40,11 @@ public class GameController : MonoBehaviour {
 
 
 	void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.LoadLevel("TitleScreen");
+			return;
+		}
+
 		if (restart) {
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				Application.LoadLevel(Application.loadedLevel);
@@ -53,11 +58,16 @@ public class GameController : MonoBehaviour {
 		yield return new WaitForSeconds(startWait);
 		while (!gameOver) {
 			// Randomly decide which side of the play area this wave will start from.
-			float x = (Random.value < 0.5f) ? -spawnValues.x : spawnValues.x;
+			float x = -spawnValues.x;
+			Quaternion spawnRotation = Quaternion.identity;
+			if (Random.value >= 0.5f) {
+				x = spawnValues.x;
+				spawnRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+			}
 			for (int i = 0; i < 10; ++i) {
 				float y = Random.Range(-spawnValues.y, spawnValues.y);
 				Vector3 spawnPosition = new Vector3(x, y, 0.0f);
-				Instantiate(enemy, spawnPosition, Quaternion.identity);
+				Instantiate(enemy, spawnPosition, spawnRotation);
 				// Small delay in between launching each wave.
 				yield return new WaitForSeconds(spawnWait);
 			}
