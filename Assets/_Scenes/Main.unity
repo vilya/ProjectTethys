@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 36960662}
   - 132: {fileID: 36960661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,6 +365,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 891233706}
+--- !u!1 &365367276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 365367278}
+  - 114: {fileID: 365367277}
+  m_Layer: 0
+  m_Name: Radar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &365367277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 365367276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb475e1f579ff74bbd477157151f2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radarBackground: {fileID: 2800000, guid: a0c646c9ffc7c844f9ed0ac38f854752, type: 3}
+  playerBlip: {fileID: 2800000, guid: 9d015473dc7e38b4289f7f944c916a6b, type: 3}
+  enemyBlip: {fileID: 2800000, guid: a978ad8c1e1cfd84490fcd03a1622c53, type: 3}
+  powerupBlip: {fileID: 2800000, guid: 99a091f1ca9645e41bc6b282d504848b, type: 3}
+  radarBounds:
+    serializedVersion: 2
+    x: 10
+    y: 110
+    width: 128
+    height: 64
+  gameBounds:
+    serializedVersion: 2
+    x: -100
+    y: -25
+    width: 200
+    height: 48
+  player: {fileID: 891233706}
+--- !u!4 &365367278
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 365367276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &409397514
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +429,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409397516}
   - 132: {fileID: 409397515}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RestartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +791,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 603032480}
   - 132: {fileID: 603032481}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShieldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1485,10 +1540,11 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   speed: 30
   boundary:
-    xMin: -100
-    xMax: 100
-    yMin: -25
-    yMax: 23
+    serializedVersion: 2
+    x: -100
+    y: -25
+    width: 200
+    height: 48
   shot: {fileID: 100004, guid: b0ca1944ceeec1944972d87ef538faf9, type: 2}
   shotSpawn: {fileID: 1263111750}
   fireRate: .150000006
@@ -1614,7 +1670,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1000992058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DisplayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +2025,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1182434745}
   - 132: {fileID: 1182434746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameOverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2314,7 +2370,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1707402114}
   - 132: {fileID: 1707402113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseHealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

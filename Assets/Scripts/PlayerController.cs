@@ -1,20 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-[System.Serializable]
-public class Boundary {
-	public float xMin, xMax, yMin, yMax;
-}
-
-
 public class PlayerController : MonoBehaviour {
 	private GameController gameController;
 	public GameObject shield;
 	public GameObject explosion;
 
 	public float speed;
-	public Boundary boundary;
+	public Rect boundary;
 
 	public GameObject shot;
 	public Transform shotSpawn;
