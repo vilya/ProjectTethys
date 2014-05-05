@@ -6,6 +6,13 @@ Project Tethys
 - You have to defend an undersea lab (or multiple labs?) from attackers.
 - Researchers out doing dives may be abducted by the bad guys; you have to rescue them.
 
+Idea:
+- Scientists do trips out from the base to gather materials, then return to the
+  base to repair it.
+- While there are N scientists in the base, the base recovers 1 unit of health
+  in K/N seconds, where K is a tunable parameter.
+- Maybe you can ferry scientists back to the base?
+
 
 Enemy types
 -----------
