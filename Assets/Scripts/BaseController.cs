@@ -6,14 +6,13 @@ public class BaseController : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject explosion;
-
-	public int initialHealth;
+	
 	private int currentHealth;
 
 	// Use this for initialization
 	void Start () {
 		gameController = GameController.GetInstance();
-		currentHealth = initialHealth;
+		currentHealth = gameController.initialBaseHealth;
 		gameController.UpdateBaseHealth(currentHealth);
 	}
 

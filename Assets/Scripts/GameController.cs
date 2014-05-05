@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 	public float startWait;
 	public float waveWait;
 
+	public int initialBaseHealth;
+
 	public GUIText scoreText;
 	public GUIText shieldText;
 	public GUIText baseHealthText;
@@ -29,6 +31,7 @@ public class GameController : MonoBehaviour {
 
 	static int nextScreenShotNum = 1;
 	private float nextScreenShotTime = 0.0f;
+	
 
 	// Use this for initialization
 	void Start() {
@@ -40,7 +43,7 @@ public class GameController : MonoBehaviour {
 		score = 0;
 		UpdateScore();
 
-		StartCoroutine(SpawnWaves(bomber));
+		StartCoroutine(SpawnWaves());
 	}
 
 
@@ -64,17 +67,25 @@ public class GameController : MonoBehaviour {
 	}
 	
 
-	IEnumerator SpawnWaves(GameObject enemy) {
+	IEnumerator SpawnWaves() {
 		// Delay before launching the first wave.
 		yield return new WaitForSeconds(startWait);
+		int waveType = 0;
 		while (!gameOver) {
 			// Randomly decide which side of the play area this wave will start from.
 			float x = -spawnValues.x;
-			Quaternion spawnRotation = Quaternion.identity;
+
+			GameObject enemy = (waveType >= 2) ? fighter : bomber;
+			waveType = (waveType + 1) % 4;
+
+			//Quaternion spawnRotation = Quaternion.identity; // this works for bombers, not fighters
+			//Quaternion spawnRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f); // this works for fighters, not bombers
+			Quaternion spawnRotation = enemy.transform.rotation;
 			if (Random.value >= 0.5f) {
 				x = spawnValues.x;
-				spawnRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+				spawnRotation *= Quaternion.Euler(0.0f, 180.0f, 0.0f);
 			}
+
 			for (int i = 0; i < 10; ++i) {
 				float y = Random.Range(-spawnValues.y, spawnValues.y);
 				Vector3 spawnPosition = new Vector3(x, y, 0.0f);
@@ -82,6 +93,7 @@ public class GameController : MonoBehaviour {
 				// Small delay in between launching each wave.
 				yield return new WaitForSeconds(spawnWait);
 			}
+
 			SpawnPickUp();
 			// Pause before launching the next wave.
 			yield return new WaitForSeconds(waveWait);
@@ -107,7 +119,8 @@ public class GameController : MonoBehaviour {
 
 
 	public void UpdateBaseHealth(int newBaseHealth) {
-		baseHealthText.text = "Base " + newBaseHealth + "% operational";
+		int percentage = (newBaseHealth * 100) / initialBaseHealth;
+		baseHealthText.text = "Base " + percentage + "% operational";
 	}
 
 
