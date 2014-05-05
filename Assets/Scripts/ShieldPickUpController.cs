@@ -23,7 +23,6 @@ public class ShieldPickUpController : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Player") {
-			Debug.Log("Playing pickup audio clip");
 			gameController.audio.PlayOneShot(collectedSound);
 		}
 
