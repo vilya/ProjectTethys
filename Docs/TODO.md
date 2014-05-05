@@ -1,5 +1,6 @@
 TO DO
 =====
 
+- Add name entry for the high score table
+- Make high scores persistent
 - Add the scientists
-- Add a radar/minimap to show where enemies, pickups and scientists are
