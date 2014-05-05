@@ -50,7 +50,7 @@ public class Radar : MonoBehaviour {
 		float width = tex.width;
 		float height = tex.height;
 		float left = x * radarBounds.width + radarBounds.xMin - width / 2.0f;
-		float top = y * radarBounds.height + radarBounds.yMin + height / 2.0f;
+		float top = y * radarBounds.height + radarBounds.yMin - height / 2.0f;
 
 		GUI.DrawTexture(new Rect(left, top, width, height), tex);
 	}
