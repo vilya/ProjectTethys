@@ -10,7 +10,8 @@ public class BomberController : MonoBehaviour {
 	public GameObject explosion;
 
 	public float startWait; // Number of seconds to wait before bombing commences.
-	public float bombWait;  // Number of seconds to wait between firing off bombs.
+	public float minBombWait;  // Minimum number of seconds to wait between firing off bombs.
+	public float maxBombWait;  // Maximum number of seconds to wait between firing off bombs.
 	public Vector3 bombSpawnOffset;
 
 	public int pointsValue;
@@ -32,7 +33,7 @@ public class BomberController : MonoBehaviour {
 		while (true) {
 			Instantiate(bomb, transform.position + bombSpawnOffset, Quaternion.identity);
 			// Small delay in between launching each bomb.
-			yield return new WaitForSeconds(bombWait);
+			yield return new WaitForSeconds(Random.Range(minBombWait, maxBombWait));
 		}
 	}
 

@@ -10,9 +10,9 @@ public class FighterController : MonoBehaviour {
 	public Transform shotSpawn;
 	public GameObject explosion;
 
-	public float startWait; // Number of seconds to wait before shooting commences.
-	public float shotWait;  // Number of seconds to wait between shots.
-	public Vector3 shotSpawnOffset;
+	public float startWait;    // Number of seconds to wait before shooting commences.
+	public float minShotWait;  // Minimum number of seconds to wait between shots.
+	public float maxShotWait;  // Maximum number of seconds to wait between shots.
 
 	public int pointsValue;
 
@@ -34,7 +34,7 @@ public class FighterController : MonoBehaviour {
 		while (true) {
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 			// Small delay in between launching each bomb.
-			yield return new WaitForSeconds(shotWait);
+			yield return new WaitForSeconds(Random.Range(minShotWait, maxShotWait));
 		}
 	}
 

@@ -3,8 +3,11 @@ using System.Collections;
 
 
 public class GameController : MonoBehaviour {
-	public GameObject bomber;
-	public GameObject fighter;
+	public GameObject[] waves;
+
+	//public GameObject bomber;
+	//public GameObject fighter;
+
 	public GameObject explosion;
 	public GameObject shieldPickUp;
 
@@ -65,8 +68,31 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
-	
 
+
+	IEnumerator SpawnWaves() {
+		// Delay before launching the first wave.
+		yield return new WaitForSeconds(startWait);
+
+		int waveIndex = 0;
+		while (!gameOver) {
+			// Instantiate the next wave.
+			GameObject wave = waves[waveIndex];
+			waveIndex = (waveIndex + 1) % waves.Length;
+			Instantiate(wave, wave.transform.position, wave.transform.rotation);
+
+			// Help the player out...
+			SpawnPickUp();
+
+			// Pause before launching the next wave.
+			yield return new WaitForSeconds(waveWait);
+		}
+		
+		restartText.text = "Press <space> to restart";
+		restart = true;
+	}
+
+	/*
 	IEnumerator SpawnWaves() {
 		// Delay before launching the first wave.
 		yield return new WaitForSeconds(startWait);
@@ -102,6 +128,7 @@ public class GameController : MonoBehaviour {
 		restartText.text = "Press <space> to restart";
 		restart = true;
 	}
+	*/
 
 
 	void SpawnPickUp() {
