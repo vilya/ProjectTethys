@@ -1721,10 +1721,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 100028, guid: fe4a50e90df645f479963c1fa4856032, type: 2}
-  - {fileID: 100028, guid: ed5bd6134d008a34b902198b2e3237ca, type: 2}
-  - {fileID: 100016, guid: 9547cdc7803408341abcb07fe74c7cb6, type: 2}
-  - {fileID: 100016, guid: 16206e6b1b4e27849b4a52e17af638a6, type: 2}
+  - {fileID: 100010, guid: 9547cdc7803408341abcb07fe74c7cb6, type: 2}
+  - {fileID: 100010, guid: 16206e6b1b4e27849b4a52e17af638a6, type: 2}
+  - {fileID: 100020, guid: fe4a50e90df645f479963c1fa4856032, type: 2}
+  - {fileID: 100020, guid: ed5bd6134d008a34b902198b2e3237ca, type: 2}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   shieldPickUp: {fileID: 100000, guid: fe29b6bb637ec954ba9d9230053050d2, type: 2}
   player: {fileID: 891233706}

@@ -89,7 +89,8 @@ MonoBehaviour:
   bomb: {fileID: 100000, guid: 72616d2649cd9a8449acca97967dd119, type: 2}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   startWait: 3
-  bombWait: 1.5
+  minBombWait: 1.20000005
+  maxBombWait: 1.79999995
   bombSpawnOffset: {x: 0, y: -2.20000005, z: 0}
   pointsValue: 300
 --- !u!135 &13500000

@@ -117,8 +117,8 @@ MonoBehaviour:
   shotSpawn: {fileID: 400000}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   startWait: 3
-  shotWait: 1.5
-  shotSpawnOffset: {x: 3.33526707, y: 0, z: 0}
+  minShotWait: 1.10000002
+  maxShotWait: 1.89999998
   pointsValue: 500
 --- !u!136 &13600000
 CapsuleCollider:
