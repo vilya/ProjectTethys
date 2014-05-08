@@ -81,8 +81,10 @@ public class GameController : MonoBehaviour {
 			waveIndex = (waveIndex + 1) % waves.Length;
 			Instantiate(wave, wave.transform.position, wave.transform.rotation);
 
-			// Help the player out...
-			SpawnPickUp();
+			// Help the player out after every second wave.
+			if (waveIndex % 2 == 0) {
+				SpawnPickUp();
+			}
 
 			// Pause before launching the next wave.
 			yield return new WaitForSeconds(waveWait);
@@ -91,44 +93,6 @@ public class GameController : MonoBehaviour {
 		restartText.text = "Press <space> to restart";
 		restart = true;
 	}
-
-	/*
-	IEnumerator SpawnWaves() {
-		// Delay before launching the first wave.
-		yield return new WaitForSeconds(startWait);
-		int waveType = 0;
-		while (!gameOver) {
-			// Randomly decide which side of the play area this wave will start from.
-			float x = -spawnValues.x;
-
-			GameObject enemy = (waveType >= 2) ? fighter : bomber;
-			waveType = (waveType + 1) % 4;
-
-			//Quaternion spawnRotation = Quaternion.identity; // this works for bombers, not fighters
-			//Quaternion spawnRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f); // this works for fighters, not bombers
-			Quaternion spawnRotation = enemy.transform.rotation;
-			if (Random.value >= 0.5f) {
-				x = spawnValues.x;
-				spawnRotation *= Quaternion.Euler(0.0f, 180.0f, 0.0f);
-			}
-
-			for (int i = 0; i < 10; ++i) {
-				float y = Random.Range(-spawnValues.y, spawnValues.y);
-				Vector3 spawnPosition = new Vector3(x, y, 0.0f);
-				Instantiate(enemy, spawnPosition, spawnRotation);
-				// Small delay in between launching each wave.
-				yield return new WaitForSeconds(spawnWait);
-			}
-
-			SpawnPickUp();
-			// Pause before launching the next wave.
-			yield return new WaitForSeconds(waveWait);
-		}
-
-		restartText.text = "Press <space> to restart";
-		restart = true;
-	}
-	*/
 
 
 	void SpawnPickUp() {
