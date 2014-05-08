@@ -4,14 +4,9 @@ Project Tethys
 - Similar gameplay to Defender, Resogun, etc.
 - Set underwater and you're driving a submarine.
 - You have to defend an undersea lab (or multiple labs?) from attackers.
-- Researchers out doing dives may be abducted by the bad guys; you have to rescue them.
-
-Idea:
-- Scientists do trips out from the base to gather materials, then return to the
-  base to repair it.
-- While there are N scientists in the base, the base recovers 1 unit of health
-  in K/N seconds, where K is a tunable parameter.
-- Maybe you can ferry scientists back to the base?
+- Researchers repair the lab while they're inside it.
+- Researchers may have to venture of the lab at some points. While they're
+  outside, they can be abducted by the bad guys; you have to rescue them.
 
 
 Enemy types
@@ -50,22 +45,25 @@ Protect the base
 Destroy enemies
 - You must destroy all enemies in each level to progress.
 
-Rescue scientists
-- Each level starts with a set number of scientists which need rescuing.
-- The scientists will either start out in the open, or emerge from the base as
-  time passes.
-- You can pick up any scientists out in the open and take them to safety on a
-  ship parked above.
-- Rescuing them gives you bonus points at the end of the level.
-- If a scientist has been picked up by an enemy, shooting down the enemy will
-  free the scientist.
-- You must rescue a minimum number of scientists to progress?
+Protect scientists
+- You start out with no scientists in the base.
+- Scientists get air-dropped in as a kind of power-ups.
+- You collect them while they're dropping & take them to the base.
+- While they're in the base, they'll repair it over time.
+- The more scientists in the base, the faster it'll get repaired (up to some
+  maximum).
+- The scientists will sometimes have to make trips out from the base to gather
+  materials or something.
+- While they're outside, they're vulnerable:
+  - They can be killed by the bad guy (or by your own "friendly" fire)
+  - They can be kidnapped.
+- If a scientist is kidnapped, shoot down the enemy carrying them will free the
+  scientist & they will try to return to the base.
 
 
 Win conditions
 --------------
 
-You progress to the next level when you have done all of the following:
-- Destroyed all enemies.
-- Rescued a sufficient number of scientists?
+- If you survive through all of the waves, you win. Simple!
+- Beyond that, the aim is to get the highest score.
 
