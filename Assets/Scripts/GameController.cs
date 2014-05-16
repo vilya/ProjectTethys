@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 
 	private bool gameOver;
 	private bool restart;
+	private bool paused;
 
 	static int nextScreenShotNum = 1;
 	private float nextScreenShotTime = 0.0f;
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour {
 	void Start() {
 		gameOver = false;
 		restart = false;
+		paused = false;
 		gameOverText.text = "";
 		restartText.text = "";
 
@@ -51,9 +53,26 @@ public class GameController : MonoBehaviour {
 
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
-			Application.LoadLevel("TitleScreen");
+		if (paused) {
+			if (Input.GetKeyDown(KeyCode.Escape)) {
+				paused = false;
+				Time.timeScale = 1.0f;
+				Application.LoadLevel("TitleScreen");
+			}
+			else if (Input.GetKeyDown (KeyCode.Space)) {
+				paused = false;
+				gameOverText.text = "";
+				restartText.text = "";
+				Time.timeScale = 1.0f;
+			}
 			return;
+		}
+
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			paused = true;
+			gameOverText.text = "Paused";
+			restartText.text = "<Esc> to quit, <space> to resume";
+			Time.timeScale = 0.0f;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Return) && Time.time >= nextScreenShotTime) {
@@ -143,6 +162,11 @@ public class GameController : MonoBehaviour {
 		else {
 			gameOverText.text = "Game Over";
 		}
+	}
+
+
+	public bool IsPaused() {
+		return paused;
 	}
 
 
