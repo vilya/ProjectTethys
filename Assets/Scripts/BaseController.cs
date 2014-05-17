@@ -6,13 +6,19 @@ public class BaseController : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject explosion;
-	
+
+	public float fixWait;   // How long it takes for a scientist to repair the base after reaching it, in seconds?
+	public int healthFromFixing;  // How much health the base recovers from a repair job.
+
 	private int currentHealth;
+
 
 	// Use this for initialization
 	void Start () {
 		gameController = GameController.GetInstance();
-		currentHealth = gameController.initialBaseHealth;
+
+		currentHealth = gameController.initialBaseHealth / 2;
+
 		gameController.UpdateBaseHealth(currentHealth);
 	}
 
@@ -24,13 +30,13 @@ public class BaseController : MonoBehaviour {
 			return;
 		}
 
+		if (other.gameObject.tag == "Scientist") {
+			ScientistReachedBase();
+			return;
+		}
+
 		int damage = 1; // TODO: get this from the weapon type.
 		TakeDamage(damage);
-
-		//if (other.gameObject.tag == "Bomb") {
-		//	Instantiate(explosion, other.transform.position, Quaternion.identity);
-		//}
-		//Destroy(other.gameObject);
 	}
 
 
@@ -44,5 +50,19 @@ public class BaseController : MonoBehaviour {
 			Destroy(gameObject);
 			Destroy(player);
 		}
+	}
+
+
+	void ScientistReachedBase()
+	{
+		StartCoroutine(FixBaseAfterDelay());
+	}
+	
+
+	IEnumerator FixBaseAfterDelay()
+	{
+		yield return new WaitForSeconds(fixWait);
+		currentHealth = Mathf.Min(currentHealth + healthFromFixing, gameController.initialBaseHealth);
+		gameController.UpdateBaseHealth(currentHealth);
 	}
 }

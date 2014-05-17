@@ -10,9 +10,12 @@ public class LaserController : MonoBehaviour {
 
 
 	public void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Boundary" ||
+		    other.gameObject.tag == "Player" ||
+		    other.gameObject.tag == "Scientist") {
 			return;
 		}
+
 		//Debug.Log("laser got hit by a " + other.gameObject.tag);
 		Destroy(gameObject);
 	}
