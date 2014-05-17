@@ -2,14 +2,15 @@
 using System.Collections;
 
 public class ScientistController : MonoBehaviour {
-	public GameObject home; // Where the scientist is trying to get to.
-
 	public float speed;
 
 
 	// Use this for initialization
 	void Start () {
-		float dx = (transform.position.x < home.transform.position.x) ? 1.0f : -1.0f;
+		GameController gameController = GameController.GetInstance();
+		GameObject theBase = gameController.theBase;
+
+		float dx = (transform.position.x < theBase.transform.position.x) ? 1.0f : -1.0f;
 		rigidbody.velocity = new Vector3(dx, 0.0f, 0.0f) * speed;
 	}
 

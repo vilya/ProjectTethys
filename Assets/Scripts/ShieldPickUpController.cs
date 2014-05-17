@@ -18,7 +18,10 @@ public class ShieldPickUpController : MonoBehaviour {
 			return;
 		}
 
-		if (other.gameObject.tag == "Laser" || other.gameObject.tag == "Bomb") {
+		if (other.gameObject.tag == "Laser" ||
+		    other.gameObject.tag == "Bomb" ||
+		    other.gameObject.tag == "EnemyLaser")
+		{
 			Instantiate(explosion, transform.position, Quaternion.identity);
 		}
 

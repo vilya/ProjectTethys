@@ -6,6 +6,7 @@ public class Radar : MonoBehaviour {
 	public Texture playerBlip;
 	public Texture enemyBlip;
 	public Texture powerupBlip;
+	public Texture scientistBlip;
 
 	public Rect radarBounds;
 	public Rect gameBounds;
@@ -32,7 +33,15 @@ public class Radar : MonoBehaviour {
 		foreach (GameObject powerUp in GameObject.FindGameObjectsWithTag("ShieldPickUp")) {
 			DrawBlip(powerUp, powerupBlip);
 		}
+		foreach (GameObject powerUp in GameObject.FindGameObjectsWithTag("ScientistPickUp")) {
+			DrawBlip(powerUp, powerupBlip);
+		}
 
+		// Draw the scientists.
+		foreach (GameObject scientist in GameObject.FindGameObjectsWithTag("Scientist")) {
+			DrawBlip(scientist, scientistBlip);
+		}
+		
 		// Draw the player.
 		DrawBlip(player, playerBlip);
 	}

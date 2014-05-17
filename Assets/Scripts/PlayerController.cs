@@ -64,7 +64,9 @@ public class PlayerController : MonoBehaviour {
 
 
 	public void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "Laser" || other.gameObject.tag == "Boundary") {
+		if (other.gameObject.tag == "Laser" ||
+		    other.gameObject.tag == "Boundary" ||
+		    other.gameObject.tag == "Scientist") {
 			return;
 		}
 
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.tag == "ShieldPickUp") {
 			RepairDamage();
 		}
-		else {
+		else if (other.gameObject.tag != "ScientistPickUp") {
 			if (Time.time >= nextDamage) {
 				TakeDamage();
 			}

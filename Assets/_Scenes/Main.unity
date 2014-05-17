@@ -396,6 +396,7 @@ MonoBehaviour:
   playerBlip: {fileID: 2800000, guid: 9d015473dc7e38b4289f7f944c916a6b, type: 3}
   enemyBlip: {fileID: 2800000, guid: a978ad8c1e1cfd84490fcd03a1622c53, type: 3}
   powerupBlip: {fileID: 2800000, guid: 99a091f1ca9645e41bc6b282d504848b, type: 3}
+  scientistBlip: {fileID: 2800000, guid: 26d48291d52d24845ac268aa90ada4cc, type: 3}
   radarBounds:
     serializedVersion: 2
     x: 10
@@ -1729,11 +1730,14 @@ MonoBehaviour:
   - {fileID: 100020, guid: ed5bd6134d008a34b902198b2e3237ca, type: 2}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   shieldPickUp: {fileID: 100000, guid: fe29b6bb637ec954ba9d9230053050d2, type: 2}
+  scientistPickUp: {fileID: 100000, guid: c5cfac788d583f84498a3be32ba28fb1, type: 2}
   player: {fileID: 891233706}
+  theBase: {fileID: 979719018}
   spawnValues: {x: 100, y: 20, z: 0}
   spawnWait: .300000012
   startWait: 0
   waveWait: 5
+  minScientistHorizSpawnDistance: 10
   initialBaseHealth: 10
   scoreText: {fileID: 36960661}
   shieldText: {fileID: 603032481}
@@ -1879,105 +1883,6 @@ Transform:
   m_LocalScale: {x: 30, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 668573108}
---- !u!1 &1093635433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1093635437}
-  - 33: {fileID: 1093635436}
-  - 65: {fileID: 1093635435}
-  - 23: {fileID: 1093635434}
-  - 54: {fileID: 1093635439}
-  - 114: {fileID: 1093635438}
-  m_Layer: 0
-  m_Name: Scientist
-  m_TagString: Scientist
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &1093635434
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: f1ea43ab5673e8344bcc777e1ce1c0a7, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortingLayerID: 0
---- !u!65 &1093635435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1093635436
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1093635437
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.2805119, y: -24.625, z: 0}
-  m_LocalScale: {x: .300000012, y: .75, z: .300000012}
-  m_Children: []
-  m_Father: {fileID: 0}
---- !u!114 &1093635438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9ab3bb79e8d854ea85ec37e8243191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  home: {fileID: 979719018}
-  speed: 3
---- !u!54 &1093635439
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093635433}
-  serializedVersion: 2
-  m_Mass: .100000001
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &1144145503
 GameObject:
   m_ObjectHideFlags: 0

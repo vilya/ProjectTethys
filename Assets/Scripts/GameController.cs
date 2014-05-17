@@ -10,14 +10,18 @@ public class GameController : MonoBehaviour {
 
 	public GameObject explosion;
 	public GameObject shieldPickUp;
+	public GameObject scientistPickUp;
 
 	public GameObject player;
+	public GameObject theBase;
 
 	public Vector3 spawnValues;
 
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
+
+	public float minScientistHorizSpawnDistance;
 
 	public int initialBaseHealth;
 
@@ -102,7 +106,12 @@ public class GameController : MonoBehaviour {
 
 			// Help the player out after every second wave.
 			if (waveIndex % 2 == 0) {
-				SpawnPickUp();
+				SpawnShieldPickUp();
+			}
+
+			// Drop in some scientists...
+			if (waveIndex % 4 == 3) {
+				SpawnScientistPickUp();
 			}
 
 			// Pause before launching the next wave.
@@ -114,14 +123,30 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	void SpawnPickUp() {
+	void SpawnShieldPickUp() {
 		float x = Random.Range(-spawnValues.x, spawnValues.x);
 		float y = spawnValues.y + 15.0f;
 		Vector3 spawnPosition = new Vector3(x, y, 0.0f);
 		Instantiate(shieldPickUp, spawnPosition, Quaternion.identity);
 	}
 
-	
+
+	void SpawnScientistPickUp() {
+		// Ensure that scientists don't get dropped straight on to the base.
+		float x = Random.Range(-spawnValues.x + minScientistHorizSpawnDistance, spawnValues.x - minScientistHorizSpawnDistance);
+		if (x >= 0.0f) {
+			x += minScientistHorizSpawnDistance;
+		}
+		else {
+			x -= minScientistHorizSpawnDistance;
+		}
+
+		float y = spawnValues.y + 15.0f;
+		Vector3 spawnPosition = new Vector3(x, y, 0.0f);
+		Instantiate(scientistPickUp, spawnPosition, Quaternion.identity);
+	}
+
+
 	public void AddScore(int extraPoints) {
 		score += extraPoints;
 		UpdateScore();
