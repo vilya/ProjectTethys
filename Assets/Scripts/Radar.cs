@@ -15,7 +15,8 @@ public class Radar : MonoBehaviour {
 
 
 	void Start() {
-		radarBounds.x = (Screen.width - radarBounds.width) / 2.0f;
+		//radarBounds.x = (Screen.width - radarBounds.width) / 2.0f;
+		radarBounds.x = Screen.width - radarBounds.width - 4.0f;
 		radarBounds.y = Screen.height - radarBounds.height - 4.0f;
 	}
 
