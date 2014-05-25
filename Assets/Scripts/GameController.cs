@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
 		score = 0;
 		UpdateScore();
 
-		StartCoroutine(SpawnWaves());
+//		StartCoroutine(SpawnWaves());
 	}
 
 
