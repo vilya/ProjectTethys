@@ -28,6 +28,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Enemy
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f23521a7e3238c442aaa0445d818985e, type: 3}
   m_Name: 
@@ -120,6 +121,27 @@ MonoBehaviour:
   minShotWait: 1.10000002
   maxShotWait: 1.89999998
   pointsValue: 500
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24c4572ce69c6f409375e5abadc1d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRange: 30
+  verticalRange: 3
+  minDistance: 5
+  speed: 10
+  shot: {fileID: 100004, guid: ac8af5539acc3a644b663ce54963e6be, type: 2}
+  shotSpawn: {fileID: 0}
+  explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
+  startWait: .100000001
+  minShotWait: .400000006
+  pointsValue: 1000
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

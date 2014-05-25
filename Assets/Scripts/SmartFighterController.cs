@@ -8,7 +8,6 @@ using System.Collections;
 public class SmartFighterController : MonoBehaviour {
 	private GameController gameController;
 
-	public GameObject target; // This is what the fighter will be attacking.
 	public float weaponRange; // The maximum horizontal distance to start firing at.
   public float verticalRange; // The maximum vertical distance to start firing at.
 	public float minDistance;		// The horizontal distance at which to stop moving towards the target.
@@ -24,18 +23,19 @@ public class SmartFighterController : MonoBehaviour {
 
 	public int pointsValue;
 	
+  private GameObject target; // This is what the fighter will be attacking.
   private float nextShotTime;
 
 	
 	// Use this for initialization
 	void Start () {
 		gameController = GameController.GetInstance();
-		
+		target = gameController.player;
+
 		//float direction = (Random.value >= 0.5f) ? 1.0f : -1.0f;
 		rigidbody.velocity = transform.up * -speed;
 	
     nextShotTime = Time.time + startWait;
-		//StartCoroutine(SpawnShots());
 	}
 
 
@@ -50,7 +50,6 @@ public class SmartFighterController : MonoBehaviour {
     if (Mathf.Abs(delta.x) > weaponRange || Mathf.Abs(delta.y) > verticalRange) {
       return;
     }
-    Debug.Log("delta = " + delta);
 
     // FIRE!!!
     nextShotTime = Time.time + minShotWait;
@@ -81,27 +80,11 @@ public class SmartFighterController : MonoBehaviour {
     rigidbody.velocity = delta;
 	}
 	
-	IEnumerator SpawnShots() {
-		// Delay before launching the first bomb.
-		yield return new WaitForSeconds(startWait);
-		while (true) {
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			// Small delay in between launching each bomb.
-			yield return new WaitForSeconds(minShotWait);
-		}
-	}
-	
-	
 	public void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "Boundary") {
-			return;
-		}
-		
-		//Debug.Log("bomber got hit by a " + other.gameObject.tag);
 		if (other.gameObject.tag == "Laser" || other.gameObject.tag == "Player") {
 			gameController.AddScore(pointsValue);
-		}
-		Instantiate(explosion, transform.position, Quaternion.identity);
-		Destroy(gameObject);
+      Instantiate(explosion, transform.position, Quaternion.identity);
+      Destroy(gameObject);
+    }
 	}
 }
