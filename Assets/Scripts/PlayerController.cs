@@ -84,6 +84,10 @@ public class PlayerController : MonoBehaviour {
 
 
 	void TakeDamage() {
+    if (currentShieldLevel < 0) {
+      return;
+    }
+
 		--currentShieldLevel;
 		if (currentShieldLevel < 0) {
 			Instantiate(explosion, transform.position, Quaternion.identity);
