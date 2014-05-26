@@ -27,8 +27,8 @@ GameObject:
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Enemy
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 400000}
@@ -100,7 +100,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -108,26 +108,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f23521a7e3238c442aaa0445d818985e, type: 3}
+  m_Script: {fileID: 11500000, guid: fbf1e99d9a759df41a1c9e88144b7430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  shot: {fileID: 100004, guid: ac8af5539acc3a644b663ce54963e6be, type: 2}
-  shotSpawn: {fileID: 400000}
-  explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
-  startWait: 3
-  minShotWait: 1.10000002
-  maxShotWait: 1.89999998
-  pointsValue: 500
+  arrivalDuration: 2
+  nextController: {fileID: 11400002}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b24c4572ce69c6f409375e5abadc1d3f, type: 3}
   m_Name: 
@@ -137,7 +131,7 @@ MonoBehaviour:
   minDistance: 5
   speed: 10
   shot: {fileID: 100004, guid: ac8af5539acc3a644b663ce54963e6be, type: 2}
-  shotSpawn: {fileID: 0}
+  shotSpawn: {fileID: 400000}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   startWait: .100000001
   minShotWait: .400000006

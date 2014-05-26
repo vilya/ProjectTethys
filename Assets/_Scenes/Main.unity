@@ -1723,11 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732ab8cc3ac54334684198b12a31fab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 100010, guid: 9547cdc7803408341abcb07fe74c7cb6, type: 2}
-  - {fileID: 100010, guid: 16206e6b1b4e27849b4a52e17af638a6, type: 2}
-  - {fileID: 100020, guid: fe4a50e90df645f479963c1fa4856032, type: 2}
-  - {fileID: 100020, guid: ed5bd6134d008a34b902198b2e3237ca, type: 2}
+  fighter: {fileID: 100002, guid: 5821c70afb73eb84a9812834f8470a74, type: 2}
   explosion: {fileID: 100000, guid: bf015597db8db1b46b1ec4308f9c64f7, type: 2}
   shieldPickUp: {fileID: 100000, guid: fe29b6bb637ec954ba9d9230053050d2, type: 2}
   scientistPickUp: {fileID: 100000, guid: c5cfac788d583f84498a3be32ba28fb1, type: 2}
@@ -1736,7 +1732,7 @@ MonoBehaviour:
   spawnValues: {x: 100, y: 20, z: 0}
   spawnWait: .300000012
   startWait: 0
-  waveWait: 5
+  waveWait: 3
   minScientistHorizSpawnDistance: 10
   initialBaseHealth: 10
   scoreText: {fileID: 36960661}
