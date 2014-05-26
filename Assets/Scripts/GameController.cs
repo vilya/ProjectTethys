@@ -3,10 +3,10 @@ using System.Collections;
 
 
 public class GameController : MonoBehaviour {
-	public GameObject[] waves;
+//	public GameObject[] waves;
 
 	//public GameObject bomber;
-	//public GameObject fighter;
+	public GameObject fighter;
 
 	public GameObject explosion;
 	public GameObject shieldPickUp;
@@ -93,6 +93,42 @@ public class GameController : MonoBehaviour {
 	}
 
 
+  IEnumerator SpawnWaves() {
+    // Delay before launching the first wave.
+    yield return new WaitForSeconds(startWait);
+    
+    int waveIndex = 0;
+    while (!gameOver) {
+      for (int i = 0; i < 6; ++i) {
+        Vector3 spawnPos = new Vector3(
+          Random.Range(-spawnValues.x, spawnValues.x),
+          Random.Range(-spawnValues.y, spawnValues.y),
+          -30.0f
+        );
+        Quaternion spawnOrient = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+        Instantiate(fighter, spawnPos, spawnOrient);
+        yield return new WaitForSeconds(spawnWait);
+      }
+      waveIndex++;
+
+      // Help the player out after every second wave.
+      if (waveIndex % 2 == 0) {
+        SpawnShieldPickUp();
+      }
+      
+      // Drop in some scientists...
+      if (waveIndex % 4 == 3) {
+        SpawnScientistPickUp();
+      }
+
+      yield return new WaitForSeconds(waveWait - spawnWait);
+    }
+
+    restartText.text = "Press <space> to restart";
+    restart = true;
+  }
+
+  /*
 	IEnumerator SpawnWaves() {
 		// Delay before launching the first wave.
 		yield return new WaitForSeconds(startWait);
@@ -121,6 +157,7 @@ public class GameController : MonoBehaviour {
 		restartText.text = "Press <space> to restart";
 		restart = true;
 	}
+ */ 
 
 
 	void SpawnShieldPickUp() {

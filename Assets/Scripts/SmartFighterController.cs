@@ -26,7 +26,7 @@ public class SmartFighterController : MonoBehaviour {
   private GameObject target; // This is what the fighter will be attacking.
   private float nextShotTime;
 
-	
+
 	// Use this for initialization
 	void Start () {
 		gameController = GameController.GetInstance();
@@ -59,7 +59,6 @@ public class SmartFighterController : MonoBehaviour {
 
 	void FixedUpdate() {
 		Vector3 delta = target.transform.position - transform.position;
-
     if (delta.x < 0.0f) {
       rigidbody.MoveRotation(Quaternion.Euler(0.0f, 0.0f, 270.0f));
     }
