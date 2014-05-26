@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 		gameController = GameController.GetInstance();
 		currentShieldLevel = initialShieldLevel;
 		gameController.UpdateShieldLevel(currentShieldLevel);
+    gameObject.SetActive(true);
 	}
 
 
@@ -92,7 +93,8 @@ public class PlayerController : MonoBehaviour {
 		if (currentShieldLevel < 0) {
 			Instantiate(explosion, transform.position, Quaternion.identity);
 			gameController.GameOver();
-			Destroy(gameObject);
+      gameObject.SetActive(false);
+			//Destroy(gameObject);
 			return;
 		}
 
